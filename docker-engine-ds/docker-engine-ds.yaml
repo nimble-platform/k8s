@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: docker-engine
+spec:
+  template:
+    metadata:
+      labels:
+        name: docker-engine
+        version: 17.06.0
+    spec:
+      containers:
+      - image: registry.eu-gb.bluemix.net/nimble/docker-engine:17.06.0-ce-dind
+        imagePullPolicy: Always
+        name: docker-engine
+        ports:
+        - containerPort: 2375
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /etc/ssl/
+          name: cert-mount
+          readOnly: true
+        - mountPath: /var/lib/docker
+          name: docker-mount
+      volumes:
+      - name: cert-mount
+        hostPath:
+          path: /etc/ssl/
+      - name: docker-mount
+        emptyDir: {}
+
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: docker-engine
+  namespace: build
+spec:
+  selector:
+    name: docker-engine
+  ports:
+    - protocol: TCP
+      port: 2375
+      targetPort: 2375

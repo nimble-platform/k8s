@@ -1,0 +1,80 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: jenkins-slave
+  name: nimble-jenkins-slave
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: nimble-jenkins-slave
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  revisionHistoryLimit: 5
+  template:
+    metadata:
+      labels:
+        app: jenkins-slave
+        component: nimble-jenkins-slave
+    spec:
+      containers:
+      - args:
+        - 3054091b34d95365b60c1659bc2df291bb337ab6faa0490e06c3a5c33a2e6536
+        - nimble-jenkins-slave
+        env:
+        - name: JENKINS_LOCATION_URL
+          value: http://jenkins.nimble.uk-south.containers.mybluemix.net/
+        - name: JENKINS_SECRET
+          value: 3054091b34d95365b60c1659bc2df291bb337ab6faa0490e06c3a5c33a2e6536
+        - name: JENKINS_JNLP_URL
+          value: http://nimble-jenkins.default.svc.cluster.local:8080/computer/nimble-jenkins-slave/slave-agent.jnlp
+        - name: JENKINS_TUNNEL
+          value: nimble-jenkins.default.svc.cluster.local:50000
+        - name: JENKINS_NAME
+          value: nimble-jenkins-slave
+        - name: JENKINS_URL
+          value: http://nimble-jenkins.default.svc.cluster.local:8080
+        - name: HOME
+          value: /home/jenkins
+        - name: DOCKER_HOST
+          value: docker-engine
+        image: registry.eu-gb.bluemix.net/nimble/jenkins-slave
+        imagePullPolicy: Always
+        name: jnlp
+        resources:
+          limits:
+            cpu: "4"
+            memory: 16Gi
+          requests:
+            cpu: "2"
+            memory: 8Gi
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        tty: true
+        volumeMounts:
+        - mountPath: /home/jenkins
+          name: workspace-volume
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: jenkins-slave-sa-token-dcrm0
+          readOnly: true
+        workingDir: /home/jenkins
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: bluemix-default-secret
+      restartPolicy: Always
+      securityContext: {}
+      serviceAccount: jenkins-slave-sa
+      serviceAccountName: jenkins-slave-sa
+      volumes:
+      - name: workspace-volume
+        persistentVolumeClaim:
+          claimName: jenkins-slave-data
+      - name: jenkins-slave-sa-token-dcrm0
+        secret:
+          defaultMode: 420
+          secretName: jenkins-slave-sa-token-dcrm0
