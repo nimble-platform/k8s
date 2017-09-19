@@ -7,7 +7,7 @@
   * To add new service named "new-service" add the following:
   ```
   ...
-    ingress.bluemix.net/rewrite-path: "serviceName=new-service rewrite=/"
+    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=new-service rewrite=/"
   ...
 
   ...
@@ -27,6 +27,7 @@ kind: Ingress
 metadata:
   annotations:
     ingress.bluemix.net/redirect-to-https: "true"
+    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=new-service rewrite=/"
   name: rules-prod
 spec:
   tls:
