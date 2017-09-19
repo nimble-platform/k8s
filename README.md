@@ -13,7 +13,7 @@
   
   ```
   
-  * You ingress should be as following:
+  * Your ingress should be as following:
   
 ```
 apiVersion: extensions/v1beta1
