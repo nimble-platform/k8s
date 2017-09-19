@@ -25,6 +25,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: prod
   annotations:
     ingress.bluemix.net/redirect-to-https: "true"
     ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=new-service rewrite=/"
