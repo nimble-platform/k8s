@@ -1,5 +1,5 @@
 # Nimble Kubernetes applications
-### Expose new service
+### How to expose new service
 1. Edit the ingress-prod-rules.yaml
 2. Add the new service as "backend"
   * To add new service named "new-service" add the following:
