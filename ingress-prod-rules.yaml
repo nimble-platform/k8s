@@ -3,19 +3,25 @@ kind: Ingress
 metadata:
   namespace: prod
   annotations:
-    ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/"
+    # ingress.bluemix.net/redirect-to-https: "true"
+    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=identity-service rewrite=/"
   name: rules-prod
 spec:
-  tls:
-  - hosts:
-    - nimble.uk-south.containers.mybluemix.net
-    secretName: nimble-cert
+  # tls:
+  # - hosts:
+  #   - nimble.uk-south.containers.mybluemix.net
+    # secretName: nimble-cert
   rules:
   - host: nimble.uk-south.containers.mybluemix.net
     http:
       paths:
-      - backend:
-          serviceName: marmotta
-          servicePort: 8080
-        path: /marmotta/
+        - path: /identity/
+          backend:
+            serviceName: identity-service
+            servicePort: 9096
+        - path: /marmotta/
+          backend:
+            serviceName: marmotta
+            servicePort: 8080
+          
+        
