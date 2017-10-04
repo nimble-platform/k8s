@@ -4,7 +4,7 @@ metadata:
   namespace: prod
   annotations:
     # ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=identity-service rewrite=/"
+    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=identity-service rewrite=/;serviceName=frontend-service rewrite=/;serviceName=catalog-service rewrite=/"
   name: rules-prod
 spec:
   # tls:
@@ -19,6 +19,14 @@ spec:
           backend:
             serviceName: identity-service
             servicePort: 9096
+        - path: /frontend/
+          backend:
+            serviceName: frontend-service
+            servicePort: 8080
+        - path: /catalog/
+          backend:
+            serviceName: catalog-service
+            servicePort: 8095
         - path: /marmotta/
           backend:
             serviceName: marmotta
