@@ -1,10 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: prod
   annotations:
     # ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: "serviceName=marmotta rewrite=/;serviceName=identity-service rewrite=/;serviceName=frontend-service rewrite=/;serviceName=catalog-service rewrite=/;serviceName=business-process-service rewrite=/"
+    ingress.bluemix.net/rewrite-path: |
+      serviceName=marmotta rewrite=/;
+      serviceName=identity-service rewrite=/;
+      serviceName=frontend-service rewrite=/;
+      serviceName=catalog-service rewrite=/;
+      serviceName=business-process-service rewrite=/;
+      serviceName=keycloak rewrite=/keycloak/
   name: rules-prod
 spec:
   # tls:
@@ -34,6 +39,10 @@ spec:
         - path: /marmotta/
           backend:
             serviceName: marmotta
+            servicePort: 8080
+        - path: /keycloak/
+          backend:
+            serviceName: keycloak
             servicePort: 8080
           
         
