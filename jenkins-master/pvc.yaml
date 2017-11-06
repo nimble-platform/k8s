@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: jenkins-data
   labels:
-    type: ibmc-file-silver
+    type: default
 spec:
   accessModes:
     - ReadWriteMany
