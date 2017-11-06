@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - jenkins.nimble.uk-south.containers.mybluemix.net
-    secretName: nimble-cert
+    - jenkins.nimble-platform.uk-south.containers.mybluemix.net
+    secretName: nimble-platform
   rules:
-  - host: jenkins.nimble.uk-south.containers.mybluemix.net
+  - host: jenkins.nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
       - backend:
