@@ -27,7 +27,7 @@ spec:
         - nimble-jenkins-slave
         env:
         - name: JENKINS_LOCATION_URL
-          value: http://jenkins.nimble.uk-south.containers.mybluemix.net/
+          value: http://jenkins.nimble-platform.uk-south.containers.mybluemix.net/
         - name: JENKINS_SECRET
           value: 3054091b34d95365b60c1659bc2df291bb337ab6faa0490e06c3a5c33a2e6536
         - name: JENKINS_JNLP_URL
@@ -59,11 +59,7 @@ spec:
         volumeMounts:
         - mountPath: /home/jenkins
           name: workspace-volume
-        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-          name: jenkins-slave-sa-token-dcrm0
-          readOnly: true
         workingDir: /home/jenkins
-      dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: bluemix-default-secret
       restartPolicy: Always
@@ -74,7 +70,3 @@ spec:
       - name: workspace-volume
         persistentVolumeClaim:
           claimName: jenkins-slave-data
-      - name: jenkins-slave-sa-token-dcrm0
-        secret:
-          defaultMode: 420
-          secretName: jenkins-slave-sa-token-dcrm0
