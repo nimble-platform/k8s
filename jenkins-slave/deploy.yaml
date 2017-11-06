@@ -23,13 +23,13 @@ spec:
     spec:
       containers:
       - args:
-        - 3054091b34d95365b60c1659bc2df291bb337ab6faa0490e06c3a5c33a2e6536
+        - 9a747af2cbd4476ff6d1ac197bbda91537650325a80f23b23b78e443b40c09d3
         - nimble-jenkins-slave
         env:
         - name: JENKINS_LOCATION_URL
           value: http://jenkins.nimble-platform.uk-south.containers.mybluemix.net/
         - name: JENKINS_SECRET
-          value: 3054091b34d95365b60c1659bc2df291bb337ab6faa0490e06c3a5c33a2e6536
+          value: 9a747af2cbd4476ff6d1ac197bbda91537650325a80f23b23b78e443b40c09d3
         - name: JENKINS_JNLP_URL
           value: http://nimble-jenkins.default.svc.cluster.local:8080/computer/nimble-jenkins-slave/slave-agent.jnlp
         - name: JENKINS_TUNNEL
