@@ -44,5 +44,8 @@ spec:
           backend:
             serviceName: keycloak
             servicePort: 8080
-          
+        - path: /register-service/
+          backend:
+            serviceName: register-service
+            servicePort: 8080     
         
