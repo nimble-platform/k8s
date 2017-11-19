@@ -5,6 +5,6 @@ node ('nimble-jenkins-slave') {
   }
     
   stage ('Deploy') {
-        sh 'kubectl apply -f ingress-rules.yaml -n prod --validate=false'
+        sh 'kubectl apply -f ingress-prod-rules.yaml -n prod --validate=false'
   }
 }
