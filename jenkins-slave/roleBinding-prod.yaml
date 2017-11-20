@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1alpha1
 kind: RoleBinding
 metadata:
   name: jenkins-slave-admin
-  nemespace: prod
+  namespace: prod
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -11,4 +11,4 @@ subjects:
 - apiVersion: v1
   kind: ServiceAccount
   name: jenkins-slave-sa
-  namespace: default
+  namespace: build
