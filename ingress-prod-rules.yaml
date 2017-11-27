@@ -1,52 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: prod
   annotations:
-    # ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: |
-      serviceName=marmotta rewrite=/;
-      serviceName=identity-service rewrite=/;
-      serviceName=frontend-service rewrite=/;
-      serviceName=catalog-service rewrite=/;
-      serviceName=business-process-service rewrite=/;
-      serviceName=keycloak rewrite=/keycloak/
-      serviceName=register rewrite=/register-service/
+    ingress.bluemix.net/redirect-to-https: "true"
+    ingress.bluemix.net/rewrite-path: "serviceName=registration-service rewrite=/"
   name: rules-prod
 spec:
-  # tls:
-  # - hosts:
-  #   - nimble.uk-south.containers.mybluemix.net
-    # secretName: nimble-cert
+  tls:
+  - hosts:
+    - nimble-platform.uk-south.containers.mybluemix.net
+    secretName: nimble-platform
   rules:
-  - host: nimble.uk-south.containers.mybluemix.net
+  - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
-        - path: /identity/
-          backend:
-            serviceName: identity-service
-            servicePort: 9096
-        - path: /frontend/
-          backend:
-            serviceName: frontend-service
-            servicePort: 8080
-        - path: /catalog/
-          backend:
-            serviceName: catalog-service
-            servicePort: 8095
-        - path: /business-process/
-          backend:
-            serviceName: business-process-service
-            servicePort: 8085
-        - path: /marmotta/
-          backend:
-            serviceName: marmotta
-            servicePort: 8080
-        - path: /keycloak/
-          backend:
-            serviceName: keycloak
-            servicePort: 8080
-        - path: /register-service/
-          backend:
-            serviceName: register-service
-            servicePort: 8080     
-        
+      - backend:
+          serviceName: registration-service
+          servicePort: 8080
+        path: /registration-service
