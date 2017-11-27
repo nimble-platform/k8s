@@ -18,4 +18,4 @@ spec:
       - backend:
           serviceName: registration-service
           servicePort: 8080
-        path: /registration-service/
+        path: /registration-service
