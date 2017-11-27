@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   namespace: prod
   annotations:
-    ingress.bluemix.net/redirect-to-https: "false"
+    ingress.bluemix.net/redirect-to-https: "true"
     ingress.bluemix.net/rewrite-path: |
       serviceName=registration-service rewrite=/;
   name: rules-prod
@@ -16,7 +16,7 @@ spec:
   - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
-        - path: /register/
+        - path: /registration-service/
           backend:
             serviceName: registration-service
             servicePort: 8080     
