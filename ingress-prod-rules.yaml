@@ -11,7 +11,7 @@ metadata:
       serviceName=catalog-service rewrite=/;
       serviceName=business-process-service rewrite=/;
       serviceName=keycloak rewrite=/keycloak/;
-      serviceName=registration-service rewrite=/register/
+      serviceName=registration-service rewrite=/;
   name: rules-prod
 spec:
   tls:
