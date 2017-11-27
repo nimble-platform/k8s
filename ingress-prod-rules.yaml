@@ -14,10 +14,10 @@ metadata:
       serviceName=registration-service rewrite=/register/
   name: rules-prod
 spec:
-  # tls:
-  # - hosts:
-  #   - nimble.uk-south.containers.mybluemix.net
-    # secretName: nimble-cert
+  tls:
+  - hosts:
+    - nimble-platform.uk-south.containers.mybluemix.net
+    secretName: nimble
   rules:
   - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
