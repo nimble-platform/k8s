@@ -18,7 +18,7 @@ spec:
   #   - nimble.uk-south.containers.mybluemix.net
     # secretName: nimble-cert
   rules:
-  - host: nimble.uk-south.containers.mybluemix.net
+  - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
         - path: /identity/
