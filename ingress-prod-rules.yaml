@@ -17,7 +17,7 @@ spec:
   tls:
   - hosts:
     - nimble-platform.uk-south.containers.mybluemix.net
-    secretName: nimble
+    secretName: nimble-platform
   rules:
   - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
