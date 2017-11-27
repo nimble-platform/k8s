@@ -15,8 +15,7 @@ spec:
   - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
-        - path: /registration-service/
-          backend:
-            serviceName: registration-service
-            servicePort: 8080     
-        
+      - backend:
+          serviceName: registration-service
+          servicePort: 8080
+        path: /registration-service/
