@@ -4,8 +4,7 @@ metadata:
   namespace: prod
   annotations:
     ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: |
-      serviceName=registration-service rewrite=/;
+    ingress.bluemix.net/rewrite-path: "serviceName=registration-service rewrite=/"
   name: rules-prod
 spec:
   tls:
