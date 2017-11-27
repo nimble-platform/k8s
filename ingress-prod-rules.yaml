@@ -10,7 +10,7 @@ metadata:
       serviceName=catalog-service rewrite=/;
       serviceName=business-process-service rewrite=/;
       serviceName=keycloak rewrite=/keycloak/;
-      serviceName=registration-service rewrite=/register
+      serviceName=registration-service rewrite=/register/
   name: rules-prod
 spec:
   # tls:
@@ -45,7 +45,7 @@ spec:
           backend:
             serviceName: keycloak
             servicePort: 8080
-        - path: /register
+        - path: /register/
           backend:
             serviceName: registration-service
             servicePort: 8080     
