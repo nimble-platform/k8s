@@ -12,6 +12,7 @@ metadata:
       serviceName=business-process-service rewrite=/;
       serviceName=keycloak rewrite=/keycloak/;
       serviceName=registration-service rewrite=/;
+      serviceName=csb-kafka rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -50,3 +51,7 @@ spec:
           backend:
             serviceName: registration-service
             servicePort: 8080     
+        - path: /csb
+          backend:
+            serviceName: csb-kafka
+            servicePort: 8080               
