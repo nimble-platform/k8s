@@ -13,6 +13,7 @@ metadata:
       serviceName=keycloak rewrite=/keycloak/;
       serviceName=registration-service rewrite=/;
       serviceName=csb-kafka rewrite=/;
+      serviceName=HWM rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -54,4 +55,8 @@ spec:
         - path: /csb
           backend:
             serviceName: csb-kafka
+            servicePort: 8080               
+        - path: /HWServlet
+          backend:
+            serviceName: HWM
             servicePort: 8080               
