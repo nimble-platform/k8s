@@ -4,7 +4,17 @@ metadata:
   namespace: prod
   annotations:
     ingress.bluemix.net/redirect-to-https: "true"
-    ingress.bluemix.net/rewrite-path: "serviceName=registration-service rewrite=/"
+    ingress.bluemix.net/rewrite-path: |
+      serviceName=marmotta rewrite=/;
+      serviceName=identity-service rewrite=/;
+      serviceName=frontend-service rewrite=/;
+      serviceName=catalog-service rewrite=/;
+      serviceName=business-process-service rewrite=/;
+      serviceName=keycloak rewrite=/keycloak/;
+      serviceName=registration-service rewrite=/;
+      serviceName=csb-kafka rewrite=/;
+      serviceName=messaging-service rewrite=/;
+      serviceName=hwm rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -15,7 +25,43 @@ spec:
   - host: nimble-platform.uk-south.containers.mybluemix.net
     http:
       paths:
-      - backend:
-          serviceName: registration-service
-          servicePort: 8080
-        path: /registration-service
+        - path: /identity/
+          backend:
+            serviceName: identity-service
+            servicePort: 9096
+        - path: /frontend/
+          backend:
+            serviceName: frontend-service
+            servicePort: 8080
+        - path: /catalog/
+          backend:
+            serviceName: catalog-service
+            servicePort: 8095
+        - path: /business-process/
+          backend:
+            serviceName: business-process-service
+            servicePort: 8085
+        - path: /marmotta/
+          backend:
+            serviceName: marmotta
+            servicePort: 8080
+        - path: /keycloak/
+          backend:
+            serviceName: keycloak
+            servicePort: 8080
+        - path: /register
+          backend:
+            serviceName: registration-service
+            servicePort: 8080     
+        - path: /csb
+          backend:
+            serviceName: csb-kafka
+            servicePort: 8080
+        - path: /messaging
+          backend:
+            serviceName: messaging-service
+            servicePort: 8080
+        - path: /HWServlet
+          backend:
+            serviceName: hwm
+            servicePort: 8080               
