@@ -58,7 +58,7 @@ spec:
           backend:
             serviceName: csb-kafka
             servicePort: 8080
-        - path: /messaging
+        - path: /messaging/
           backend:
             serviceName: messaging-service
             servicePort: 8080
