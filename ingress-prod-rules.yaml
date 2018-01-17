@@ -66,7 +66,7 @@ spec:
           backend:
             serviceName: hwm
             servicePort: 8080
-        - path: /dashboards
+        - path: /dashboards/*
           backend:
             serviceName: dashboards-service
             servicePort: 8080
