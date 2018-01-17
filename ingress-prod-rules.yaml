@@ -15,6 +15,7 @@ metadata:
       serviceName=csb-kafka rewrite=/;
       serviceName=messaging-service rewrite=/;
       serviceName=hwm rewrite=/;
+      serviceName=dashboards-service rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -64,4 +65,9 @@ spec:
         - path: /HWServlet
           backend:
             serviceName: hwm
-            servicePort: 8080               
+            servicePort: 8080
+        - path: /dashboards
+          backend:
+            serviceName: dashboards-service
+            servicePort: 8080
+            
