@@ -10,7 +10,7 @@ metadata:
       serviceName=frontend-service rewrite=/;
       serviceName=catalog-service rewrite=/;
       serviceName=business-process-service rewrite=/;
-      serviceName=keycloak rewrite=/keycloak/;
+      serviceName=keycloak rewrite=/;
       serviceName=registration-service rewrite=/;
       serviceName=csb-kafka rewrite=/;
       serviceName=messaging-service rewrite=/;
