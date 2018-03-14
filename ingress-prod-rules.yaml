@@ -16,6 +16,7 @@ metadata:
       serviceName=messaging-service rewrite=/;
       serviceName=hwm rewrite=/;
       serviceName=grafana-grafana rewrite=/;
+      serviceName=dashboards-service rewrite=/;
   name: rules-prod
 spec:
   tls:
