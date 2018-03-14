@@ -50,11 +50,11 @@ spec:
           backend:
             serviceName: keycloak
             servicePort: 8080
-        - path: /register
+        - path: /register/
           backend:
             serviceName: registration-service
             servicePort: 8080     
-        - path: /csb
+        - path: /csb/
           backend:
             serviceName: csb-kafka
             servicePort: 8080
