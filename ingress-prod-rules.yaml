@@ -15,7 +15,7 @@ metadata:
       serviceName=csb-kafka rewrite=/;
       serviceName=messaging-service rewrite=/;
       serviceName=hwm rewrite=/;
-      serviceName=dashboards-service rewrite=/;
+      serviceName=grafana-grafana rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -70,4 +70,7 @@ spec:
           backend:
             serviceName: dashboards-service
             servicePort: 8080
-            
+        - path: /grafana/
+          backend:
+            serviceName: grafana-grafana
+            servicePort: 80
