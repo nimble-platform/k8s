@@ -38,7 +38,7 @@ spec:
         - path: /catalogue/
           backend:
             serviceName: catalogue-service
-            servicePort: 8080
+            servicePort: 8095
         - path: /business-process/
           backend:
             serviceName: business-process-service
