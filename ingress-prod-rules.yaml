@@ -8,7 +8,7 @@ metadata:
       serviceName=marmotta rewrite=/;
       serviceName=identity-service rewrite=/;
       serviceName=frontend-service rewrite=/;
-      serviceName=catalog-service rewrite=/;
+      serviceName=catalogue-service rewrite=/;
       serviceName=business-process-service rewrite=/;
       serviceName=keycloak rewrite=/;
       serviceName=registration-service rewrite=/;
@@ -35,9 +35,9 @@ spec:
           backend:
             serviceName: frontend-service
             servicePort: 8080
-        - path: /catalog/
+        - path: /catalogue/
           backend:
-            serviceName: catalog-service
+            serviceName: catalogue-service
             servicePort: 8095
         - path: /business-process/
           backend:
