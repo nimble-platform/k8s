@@ -17,6 +17,7 @@ metadata:
       serviceName=hwm rewrite=/;
       serviceName=grafana-grafana rewrite=/;
       serviceName=dashboards-service rewrite=/;
+      serviceName=object-store rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -75,3 +76,7 @@ spec:
           backend:
             serviceName: grafana-grafana
             servicePort: 80
+        - path: /objectstore/
+          backend:
+            serviceName: object-store
+            servicePort: 8080
