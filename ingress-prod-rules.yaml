@@ -76,7 +76,7 @@ spec:
           backend:
             serviceName: grafana-grafana
             servicePort: 80
-        - path: /objectstore/
+        - path: /object-store/
           backend:
             serviceName: object-store
             servicePort: 8080
