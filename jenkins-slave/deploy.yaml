@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: aps/v1
 kind: Deployment
 metadata:
   labels:
@@ -14,7 +14,7 @@ spec:
       maxSurge: 1
       maxUnavailable: 1
     type: RollingUpdate
-  revisionHistoryLimit: 5
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
@@ -50,8 +50,8 @@ spec:
             cpu: "4"
             memory: 16Gi
           requests:
-            cpu: "2"
-            memory: 8Gi
+            cpu: "1"
+            memory: 4Gi
         securityContext:
           privileged: false
         terminationMessagePath: /dev/termination-log
