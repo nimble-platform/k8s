@@ -10,7 +10,7 @@ metadata:
       serviceName=frontend-service rewrite=/;
       serviceName=catalogue-service rewrite=/;
       serviceName=business-process-service rewrite=/;
-      serviceName=keycloak rewrite=/;
+      serviceName=keycloak rewrite=/nimble-platform.uk-south.containers.mybluemix.net;
       serviceName=registration-service rewrite=/;
       serviceName=csb-kafka rewrite=/;
       serviceName=messaging-service rewrite=/;
