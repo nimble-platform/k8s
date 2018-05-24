@@ -18,6 +18,7 @@ metadata:
       serviceName=grafana-grafana rewrite=/;
       serviceName=dashboards-service rewrite=/;
       serviceName=object-store rewrite=/;
+      serviceName=data-channels rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -79,4 +80,8 @@ spec:
         - path: /object-store/
           backend:
             serviceName: object-store
+            servicePort: 8080
+        - path: /channels/
+          backend:
+            serviceName: data-channels
             servicePort: 8080
