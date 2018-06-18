@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   namespace: prod
   annotations:
+    ingress.bluemix.net/client-max-body-size: 512m
     ingress.bluemix.net/redirect-to-https: "true"
     ingress.bluemix.net/rewrite-path: |
       serviceName=marmotta rewrite=/;
