@@ -25,7 +25,7 @@ spec:
         component: nimble-jenkins-master
     spec:
       containers:
-      - image: jenkinsci/jenkins:2.89.4
+      - image: jenkinsci/jenkins:2.121.2
         imagePullPolicy: Always
         name: nimble-jenkins
         ports:
