@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: jenkins-slave-data
+  name: jenkins-slave-data-gold
   labels:
     type: ibmc-file-gold
 spec:
@@ -10,3 +10,4 @@ spec:
   resources:
     requests:
       storage: 80Gi
+  storageClassName: ibmc-file-gold

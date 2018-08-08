@@ -4,6 +4,7 @@ metadata:
   labels:
     app: jenkins-slave
   name: nimble-jenkins-slave
+  namespace: build
 spec:
   replicas: 1
   selector:
@@ -22,27 +23,27 @@ spec:
         component: nimble-jenkins-slave
     spec:
       containers:
-      - args:
-        - 9a747af2cbd4476ff6d1ac197bbda91537650325a80f23b23b78e443b40c09d3
-        - nimble-jenkins-slave
-        env:
+      - env:
         - name: JENKINS_LOCATION_URL
-          value: http://jenkins.nimble-platform.uk-south.containers.mybluemix.net/
+          value: https://nimble.eu-de.containers.appdomain.cloud/jenkins/
         - name: JENKINS_SECRET
-          value: 9a747af2cbd4476ff6d1ac197bbda91537650325a80f23b23b78e443b40c09d3
+          valueFrom:
+            secretKeyRef:
+              key: jnlp-token
+              name: jnlp-secret
         - name: JENKINS_JNLP_URL
-          value: http://nimble-jenkins.default.svc.cluster.local:8080/computer/nimble-jenkins-slave/slave-agent.jnlp
+          value: http://nimble-jenkins.default.svc.cluster.local:8080/jenkins/computer/nimble-jenkins-slave/slave-agent.jnlp
         - name: JENKINS_TUNNEL
           value: nimble-jenkins.default.svc.cluster.local:50000
         - name: JENKINS_NAME
           value: nimble-jenkins-slave
         - name: JENKINS_URL
-          value: http://nimble-jenkins.default.svc.cluster.local:8080
+          value: http://nimble-jenkins.default.svc.cluster.local:8080/jenkins
         - name: HOME
           value: /home/jenkins
         - name: DOCKER_HOST
           value: docker-engine
-        image: registry.eu-gb.bluemix.net/nimble/jenkins-slave
+        image: registry.eu-de.bluemix.net/nimble/jenkins-slave
         imagePullPolicy: Always
         name: jnlp
         resources:

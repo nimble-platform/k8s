@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: docker-engine
+  namespace: build
 spec:
   template:
     metadata:
@@ -10,7 +11,7 @@ spec:
         version: 17.06.0
     spec:
       containers:
-      - image: registry.eu-gb.bluemix.net/nimble/docker-engine:17.06.0-ce-dind
+      - image: nimbleplatform/docker-engine:17.06.0-ce-dind
         imagePullPolicy: Always
         name: docker-engine
         ports:

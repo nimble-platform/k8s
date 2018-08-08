@@ -25,9 +25,12 @@ spec:
         component: nimble-jenkins-master
     spec:
       containers:
-      - image: jenkinsci/jenkins:2.121.2
+      - image: jenkins/jenkins:2.121.2
         imagePullPolicy: Always
         name: nimble-jenkins
+        env:
+          - name: JENKINS_OPTS
+            value: "--prefix=/jenkins"
         ports:
         - containerPort: 8080
           name: http
