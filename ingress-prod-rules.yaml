@@ -11,7 +11,7 @@ metadata:
       serviceName=frontend-service rewrite=/;
       serviceName=catalogue-service rewrite=/;
       serviceName=business-process-service rewrite=/;
-      serviceName=keycloak rewrite=/nimble-platform.uk-south.containers.mybluemix.net/;
+      serviceName=keycloak rewrite=/nimble.eu-de.containers.appdomain.cloud/;
       serviceName=registration-service rewrite=/;
       serviceName=csb-kafka rewrite=/;
       serviceName=messaging-service rewrite=/;
@@ -25,10 +25,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - nimble-platform.uk-south.containers.mybluemix.net
+    - nimble.eu-de.containers.appdomain.cloud
     secretName: nimble-platform
   rules:
-  - host: nimble-platform.uk-south.containers.mybluemix.net
+  - host: nimble.eu-de.containers.appdomain.cloud
     http:
       paths:
         - path: /identity/
