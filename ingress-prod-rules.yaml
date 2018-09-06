@@ -21,6 +21,7 @@ metadata:
       serviceName=object-store rewrite=/;
       serviceName=data-channels rewrite=/;
       serviceName=collaboration-service rewrite=/;
+      serviceName=eureka-service rewrite=/;
   name: rules-prod
 spec:
   tls:
