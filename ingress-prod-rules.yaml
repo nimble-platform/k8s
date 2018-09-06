@@ -91,3 +91,7 @@ spec:
           backend:
             serviceName: collaboration-service
             servicePort: 8080
+        - path: /eureka/
+          backend:
+            serviceName: eureka-service
+            servicePort: 8080
