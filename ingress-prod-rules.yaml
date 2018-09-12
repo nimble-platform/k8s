@@ -27,7 +27,7 @@ spec:
   tls:
   - hosts:
     - nimble.eu-de.containers.appdomain.cloud
-    secretName: nimble-platform
+    secretName: nimble
   rules:
   - host: nimble.eu-de.containers.appdomain.cloud
     http:
