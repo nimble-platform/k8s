@@ -3,18 +3,18 @@ kind: Ingress
 metadata:
   annotations:
     ingress.bluemix.net/redirect-to-https: "true"
-    #ingress.bluemix.net/rewrite-path: "serviceName=beaware-jenkins rewrite=/"
   name: rules
+  namespace: default
 spec:
-  tls:
-  - hosts:
-    - jenkins.nimble-platform.uk-south.containers.mybluemix.net
-    secretName: nimble-platform
   rules:
-  - host: jenkins.nimble-platform.uk-south.containers.mybluemix.net
+  - host: jenkins.nimble.eu-de.containers.appdomain.cloud
     http:
       paths:
       - backend:
           serviceName: nimble-jenkins
           servicePort: 8080
         path: /jenkins
+  tls:
+  - hosts:
+    - jenkins.nimble.eu-de.containers.appdomain.cloud
+    secretName: nimble
