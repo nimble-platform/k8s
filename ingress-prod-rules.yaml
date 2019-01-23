@@ -20,6 +20,7 @@ metadata:
       serviceName=dashboards-service rewrite=/;
       serviceName=object-store rewrite=/;
       serviceName=data-channels rewrite=/;
+      serviceName=data-pipes rewrite=/;
       serviceName=collaboration-service rewrite=/;
   name: rules-prod
 spec:
@@ -87,6 +88,10 @@ spec:
           backend:
             serviceName: data-channels
             servicePort: 8080
+        - path: /pipes/
+          backend:
+            servicePort: 8080
+            serviceName: data-pipes
         - path: /collaborations/
           backend:
             serviceName: collaboration-service
