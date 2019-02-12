@@ -98,9 +98,9 @@ spec:
           backend:
             serviceName: collaboration-service
             servicePort: 8080
-        - path: /dcf_service/
+        - path: /dcf-service/
           backend:
-            serviceName: dcf_service
+            serviceName: dcf-service
             servicePort: 8080
         - path: /eureka/
           backend:
