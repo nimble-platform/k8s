@@ -23,6 +23,7 @@ metadata:
       serviceName=data-pipes rewrite=/;
       serviceName=collaboration-service rewrite=/;
       serviceName=eureka-service rewrite=/;
+      serviceName=dcf_service rewrite=/;
   name: rules-prod
 spec:
   tls:
@@ -96,6 +97,10 @@ spec:
         - path: /collaborations/
           backend:
             serviceName: collaboration-service
+            servicePort: 8080
+        - path: /dcf_service/
+          backend:
+            serviceName: dcf_service
             servicePort: 8080
         - path: /eureka/
           backend:
