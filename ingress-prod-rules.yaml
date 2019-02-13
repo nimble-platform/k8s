@@ -23,7 +23,7 @@ metadata:
       serviceName=data-pipes rewrite=/;
       serviceName=collaboration-service rewrite=/;
       serviceName=eureka-service rewrite=/;
-      serviceName=dcf_service rewrite=/;
+      serviceName=dcf-service rewrite=/;
   name: rules-prod
 spec:
   tls:
