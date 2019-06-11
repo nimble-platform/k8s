@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: prod
+  annotations:
+    ingress.bluemix.net/client-max-body-size: 512m
+    ingress.bluemix.net/rewrite-path: |
+      serviceName=collaboration-service rewrite=/;
+  name: demo-rules
+spec:
+  rules:
+  - host: nimble.eu-de.containers.appdomain.cloud
+    http:
+      paths:
+        - path: /collaborations/
+          backend:
+            serviceName: collaboration-service
+            servicePort: 8080
