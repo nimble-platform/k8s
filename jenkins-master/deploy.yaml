@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: jenkins-master
-    release: "2.121.2"
+    release: "2.164.3"
     component: nimble-jenkins-master
   name: nimble-jenkins
 spec:
@@ -21,11 +21,14 @@ spec:
     metadata:
       labels:
         app: jenkins-master
-        release: "2.121.2"
+        release: "2.164.3"
         component: nimble-jenkins-master
     spec:
       containers:
-      - image: jenkinsci/jenkins:2.121.2
+      - env: 
+        - name: JENKINS_OPTS
+          value: --prefix=/jenkins
+        image: jenkins/jenkins:2.164.3
         imagePullPolicy: Always
         name: nimble-jenkins
         ports:
