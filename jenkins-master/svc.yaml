@@ -4,7 +4,7 @@ metadata:
   labels:
     app: jenkins-master
     component: nimble-jenkins-master
-    release: "2.60.2"
+    release: "2.164.3"
   name: nimble-jenkins
 spec:
   ports:
